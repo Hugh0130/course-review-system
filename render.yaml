@@ -1,0 +1,31 @@
+services:
+  - type: web
+    name: course-review-backend
+    env: node
+    root: backend
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: DB_HOST
+        sync: false
+      - key: DB_USER
+        sync: false
+      - key: DB_PASSWORD
+        sync: false
+      - key: DB_NAME
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: NODE_ENV
+        value: production
+
+  - type: web
+    name: course-review-frontend
+    env: static
+    root: frontend
+    buildCommand: ""
+    staticPublishPath: ./frontend
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html

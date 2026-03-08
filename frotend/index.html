@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>选修课评价系统</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+</head>
+<body>
+    <div class="container">
+        <!-- 头部 -->
+        <header>
+            <h1><i class="fas fa-graduation-cap"></i> 选修课评价系统</h1>
+            <div class="user-info">
+                <div class="login-section">
+                    <input type="text" id="username" placeholder="用户名">
+                    <button id="login-btn">登录/注册</button>
+                </div>
+                <div class="user-welcome" id="user-welcome" style="display: none;">
+                    <span>Hi, <span id="current-user"></span></span>
+                </div>
+            </div>
+        </header>
+
+        <!-- 主内容区 -->
+        <main>
+            <!-- 搜索区 -->
+            <section class="search-section">
+                <div class="search-box">
+                    <input type="text" id="search-input" placeholder="搜索选修课名称或关键词...">
+                    <button id="search-btn"><i class="fas fa-search"></i> 搜索</button>
+                </div>
+                <div class="filter-options">
+                    <button id="show-all" class="active">显示所有课程</button>
+                    <button id="sort-popular">按热度排序</button>
+                </div>
+            </section>
+
+            <!-- 课程展示区 -->
+            <section class="courses-section">
+                <h2><i class="fas fa-book-open"></i> 所有选修课</h2>
+                <div class="pagination-controls">
+                    <button id="prev-page"><i class="fas fa-chevron-left"></i> 上一页</button>
+                    <span id="page-info">第 <span id="current-page">1</span> 页，共 <span id="total-pages">1</span> 页</span>
+                    <button id="next-page">下一页 <i class="fas fa-chevron-right"></i></button>
+                </div>
+                <div id="courses-container" class="courses-grid">
+                    <!-- 课程卡片将通过JS动态生成 -->
+                </div>
+            </section>
+
+            <!-- 课程详情模态框 -->
+            <div id="course-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close-modal">&times;</span>
+                    <h2 id="modal-course-title"></h2>
+                    <p id="modal-course-desc"></p>
+                    
+                    <!-- 评价表单 -->
+                    <div class="review-form">
+                        <h3><i class="fas fa-comment-dots"></i> 发表评价</h3>
+                        <div class="form-group">
+                            <textarea id="review-text" placeholder="写下你对这门课的评价..." rows="4"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>评分:</label>
+                            <div class="rating">
+                                <span class="star" data-value="1">★</span>
+                                <span class="star" data-value="2">★</span>
+                                <span class="star" data-value="3">★</span>
+                                <span class="star" data-value="4">★</span>
+                                <span class="star" data-value="5">★</span>
+                            </div>
+                            <span id="rating-value">0</span>/5
+                        </div>
+                        <button id="submit-review">提交评价</button>
+                    </div>
+                    
+                    <!-- 评价列表 -->
+                    <div class="reviews-section">
+                        <h3><i class="fas fa-list"></i> 所有评价</h3>
+                        <div id="reviews-container">
+                            <!-- 评价将通过JS动态生成 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <footer>
+            <p>选修课评价系统 &copy; 2026 丙午马年</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
